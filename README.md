@@ -10,6 +10,7 @@ university then layering an AI-powered natural language interface (NL2SQL chatbo
 **Team:** Ali Zafar Awan, Hassan Malik, Khadija Mughees, Fizza Atif
 ---
 **University:** Information Technology University of Punjab, Lahore.
+---
 
 ---
 
