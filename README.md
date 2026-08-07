@@ -4,13 +4,12 @@ A two-part database systems project: designing and building a relational databas
 university then layering an AI-powered natural language interface (NL2SQL chatbot) on top of it.
 
 **Course:** CS254 - Database Systems
----
+
 **Instructor:** Nauman Arshad
----
+
 **Team:** Ali Zafar Awan, Hassan Malik, Khadija Mughees, Fizza Atif
----
+
 **University:** Information Technology University of Punjab, Lahore.
----
 
 ---
 
