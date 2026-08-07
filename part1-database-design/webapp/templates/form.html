@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student — UMS</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <nav>
+        <h1>University Management System</h1>
+        <div class="nav-links">
+            <a href="/">Dashboard</a>
+            <a href="/students">Students</a>
+            <a href="/faculty">Faculty</a>
+            <a href="/departments">Departments</a>
+            <a href="/fee-payments">Fee Payments</a>
+            <a href="/add-student">Add Student</a>
+        </div>
+
+    </nav>
+
+    <div class="container">
+
+        <h2>Add New Student</h2>
+
+        {% if message %}
+        <div class="message {% if 'Error' in message %}error{% else %}success{% endif %}">
+            {{ message }}
+        </div>
+        {% endif %}
+
+        <form method="POST" action="/add-student" class="student-form">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>Student ID</label>
+                    <input type="text" name="student_id" placeholder="e.g. STU000501" pattern="STU\d{6}"
+                        title="Format: STU followed by 6 digits" required>
+                </div>
+
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" name="first_name" placeholder="First name" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" name="last_name" placeholder="Last name" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Batch Year</label>
+                    <input type="number" name="batch" placeholder="e.g. 2024" min="2000" max="2100" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Date of Birth</label>
+                    <input type="date" name="dob" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Gender</label>
+                    <select name="gender" required>
+                        <option value="">Select gender</option>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                        <option value="O">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>House No</label>
+                    <input type="text" name="house_no" placeholder="e.g. 123">
+                </div>
+
+                <div class="form-group">
+                    <label>Street / Lane</label>
+                    <input type="text" name="street_lane" placeholder="e.g. Street 5">
+                </div>
+
+                <div class="form-group">
+                    <label>Sector / Block / Phase</label>
+                    <input type="text" name="sector_block_phase" placeholder="e.g. Phase 2">
+                </div>
+
+                <div class="form-group">
+                    <label>Town / Area</label>
+                    <input type="text" name="town" placeholder="e.g. Gulberg" required>
+                </div>
+
+                <div class="form-group">
+                    <label>City</label>
+                    <input type="text" name="city" placeholder="e.g. Lahore" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Province</label>
+                    <input type="text" name="province" placeholder="e.g. Punjab" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Country</label>
+                    <input type="text" name="country" value="Pakistan" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Postal Code</label>
+                    <input type="text" name="postal_code" placeholder="e.g. 54000" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="text" name="phone" placeholder="e.g. 03001234567" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="e.g. ali@student.university.edu.pk" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Degree</label>
+                    <select name="degree_id" required>
+                        <option value="">Select degree</option>
+                        {% for degree in degrees %}
+                        <option value="{{ degree[0] }}">{{ degree[1] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+            </div>
+
+            <button type="submit" class="btn-submit">Add Student</button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

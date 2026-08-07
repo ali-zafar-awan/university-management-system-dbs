@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departments — UMS</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <nav>
+        <h1>University Management System</h1>
+        <div class="nav-links">
+            <a href="/">Dashboard</a>
+            <a href="/students">Students</a>
+            <a href="/faculty">Faculty</a>
+            <a href="/departments">Departments</a>
+            <a href="/fee-payments">Fee Payments</a>
+            <a href="/add-student">Add Student</a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <h2>Departments</h2>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Department ID</th>
+                        <th>Department Name</th>
+                        <th>Head of Department</th>
+                        <th>Total Faculty</th>
+                        <th>Total Students</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if departments %}
+                        {% for d in departments %}
+                        <tr>
+                            <td>{{ d[0] }}</td>
+                            <td>{{ d[1] }}</td>
+                            <td>{{ d[2] }} {{ d[3] }}</td>
+                            <td>{{ d[4] }}</td>
+                            <td>{{ d[5] }}</td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="5" class="no-results">No departments found.</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</body>
+</html>

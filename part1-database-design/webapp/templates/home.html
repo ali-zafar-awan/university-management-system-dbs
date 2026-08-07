@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UMS Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <nav>
+        <h1>University Management System</h1>
+        <div class="nav-links">
+            <a href="/">Dashboard</a>
+            <a href="/students">Students</a>
+            <a href="/faculty">Faculty</a>
+            <a href="/departments">Departments</a>
+            <a href="/fee-payments">Fee Payments</a>
+            <a href="/add-student">Add Student</a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <h2>Dashboard Overview</h2>
+        <p>Welcome to the University Management System. Here is a live summary of the database.</p>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Total Students</h3>
+                <p class="number">{{ total_students }}</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Faculty</h3>
+                <p class="number">{{ total_faculty }}</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Departments</h3>
+                <p class="number">{{ total_departments }}</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Courses</h3>
+                <p class="number">{{ total_courses }}</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Enrollments</h3>
+                <p class="number">{{ total_enrollments }}</p>
+            </div>
+
+            <div class="card">
+                <h3>Active Semester</h3>
+                <p class="number">{{ active_semester }}</p>
+            </div>
+
+            <div class="card">
+                <h3>Fees Paid</h3>
+                <p class="number">{{ paid_fees }}</p>
+            </div>
+
+            <div class="card highlight">
+                <h3>Overdue Fee Payments</h3>
+                <p class="number">{{ overdue_fees }}</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

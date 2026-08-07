@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students — UMS</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <nav>
+        <h1>University Management System</h1>
+        <div class="nav-links">
+            <a href="/">Dashboard</a>
+            <a href="/students">Students</a>
+            <a href="/faculty">Faculty</a>
+            <a href="/departments">Departments</a>
+            <a href="/fee-payments">Fee Payments</a>
+            <a href="/add-student">Add Student</a>
+        </div>
+
+    </nav>
+
+    <div class="container">
+
+        <h2>Student Records</h2>
+
+        <form method="GET" action="/students" class="search-form">
+            <input type="text" name="search" placeholder="Search by name or student ID..." value="{{ search }}">
+
+            <select name="dept">
+                <option value="">All Departments</option>
+                {% for dept in departments %}
+                <option value="{{ dept }}" {% if dept==selected_dept %}selected{% endif %}>{{ dept }}</option>
+                {% endfor %}
+            </select>
+
+            <select name="batch">
+                <option value="">All Batches</option>
+                {% for year in [2020, 2021, 2022, 2023, 2024] %}
+                <option value="{{ year }}" {% if selected_batch==year|string %}selected{% endif %}>{{ year }}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit">Search</button>
+            <a href="/students" class="btn-clear">Clear</a>
+        </form>
+
+        <p class="results-count">Showing {{ students|length }} student(s)</p>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Batch</th>
+                        <th>Gender</th>
+                        <th>Department</th>
+                        <th>Degree</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if students %}
+                    {% for s in students %}
+                    <tr>
+                        <td>{{ s[0] }}</td>
+                        <td>{{ s[1] }}</td>
+                        <td>{{ s[2] }}</td>
+                        <td>{{ s[3] }}</td>
+                        <td>{{ s[4] }}</td>
+                        <td>{{ s[7] }}</td>
+                        <td>{{ s[8] }}</td>
+                        <td>{{ s[5] }}</td>
+                        <td>{{ s[6] }}</td>
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td colspan="9" class="no-results">No students found.</td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

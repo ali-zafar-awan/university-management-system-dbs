@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fee Payments — UMS</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <nav>
+        <h1>University Management System</h1>
+        <div class="nav-links">
+            <a href="/">Dashboard</a>
+            <a href="/students">Students</a>
+            <a href="/faculty">Faculty</a>
+            <a href="/departments">Departments</a>
+            <a href="/fee-payments">Fee Payments</a>
+            <a href="/add-student">Add Student</a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <h2>Fee Payment Records</h2>
+
+        <form method="GET" action="/fee-payments" class="search-form">
+            <select name="status">
+                <option value="">All Statuses</option>
+                {% for s in ['Paid', 'Partial', 'Pending', 'Overdue'] %}
+                <option value="{{ s }}" {% if selected_status==s %}selected{% endif %}>{{ s }}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit">Filter</button>
+            <a href="/fee-payments" class="btn-clear">Clear</a>
+        </form>
+
+        <p class="results-count">Showing {{ payments|length }} payment record(s)</p>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Payment ID</th>
+                        <th>Student ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Semester</th>
+                        <th>Total Due</th>
+                        <th>Amount Paid</th>
+                        <th>Payment Date</th>
+                        <th>Method</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if payments %}
+                    {% for p in payments %}
+                    <tr>
+                        <td>{{ p[0] }}</td>
+                        <td>{{ p[1] }}</td>
+                        <td>{{ p[2] }}</td>
+                        <td>{{ p[3] }}</td>
+                        <td>{{ p[9] }}</td>
+                        <td>{{ p[4] }}</td>
+                        <td>{{ p[5] }}</td>
+                        <td>{{ p[6] if p[6] else 'N/A' }}</td>
+                        <td>{{ p[7] if p[7] else 'N/A' }}</td>
+                        <td>
+                            <span class="status-badge status-{{ p[8].lower() }}">{{ p[8] }}</span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td colspan="10" class="no-results">No payment records found.</td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
